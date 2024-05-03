@@ -1,0 +1,296 @@
+.total-container{
+    display: grid;
+    max-width: calc(100% - 40px)  !important;
+    gap: 0.8rem;
+    grid-template-columns: 2.5fr 1fr;
+    margin-top: 0.8rem;
+    margin-left: 22px !important;
+    margin-right: 2px !important;
+
+}
+.navbar-brand {
+    font-family: 'Lato', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: white; /* Set the text color to white */
+    /* Add any additional styling here */
+    /* Add any additional styling here */
+}
+
+
+
+.summmmmary{
+  padding-left: 35px;
+}
+.grid1{
+    display: grid;
+    gap:0.8rem;
+    grid-template-rows: auto auto auto;
+}
+.flex1,.flex2{
+    display: flex;
+    flex-direction: column;
+    gap:0.8rem;
+}
+.item{
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid rgba(0, 0, 0, 0.1); /* Thin solid border with some transparency */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);/* Subtle shadow effect */
+    padding: 30px;
+    height: auto;
+}
+@keyframes blink {
+  0% {
+    box-shadow: 0 4px 8px #ADD8E6;
+  }
+  50% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: 0 4px 8px #ADD8E6;
+  }
+}
+.sixth{
+  border: 2.5px solid #ADD8E6;
+  animation: blink 1s infinite;
+}
+.sixth{
+  padding: 20px;
+}
+
+.logo{
+   grid-column: span 2;
+   flex-direction: row;
+   width: 100%;
+   margin-top: -20px;
+   padding-top: 15px;
+   border-top: 0px;
+   padding-bottom: 3px;
+}
+
+.search-container {
+
+    margin-left: 300px !important;
+}
+
+
+.navbar.navbar-expand-lg.bg-body-tertiary {
+    background-color: #ADD8E6 !important; /* Your desired color */
+}
+.item.overview p {
+    color: #6C757D; /* Your desired color */
+}
+.total-container a{
+    color: green !important;
+}
+
+
+h2,h4{
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+.blur {
+    display: flex;
+    height: 60px;
+    grid-column: span 2;
+
+    background-color: aquamarine;
+    z-index: -1; /* Send the blur div behind other content */
+}
+
+.star-rating {
+    display: inline-block;
+  }
+
+  .static-star {
+    font-size: 2em;
+    padding: 0.2em;
+    color: #ccc; /* Set the color to a light gray for unfilled stars */
+    height: 200px;
+    width: 200px;
+  }
+
+  .filled-star {
+    color: black; /* Set the color to black for filled stars */
+  }
+
+  .half-filled-star {
+    color: black; /* Set the color to black for the half-filled star */
+  }
+  .mid{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    z-index: -1;
+  }
+
+  .rating-value {
+    font-size: 2em; /* Adjust the font size as needed */
+    position: relative;
+    top:2px;
+}
+.bi-chevron-down{
+    position: relative;
+    top:26px;
+    color: darkslategray;
+    font-weight: bold;
+}
+.feedback-options *{
+    font-size: large ;
+}
+.sizeinc{
+    font-weight: bold;
+}
+.overview .static-star{
+    font-size: 1em;
+    padding: 0.2em;
+    position: relative;
+    top: 3px;
+    color: black;
+}
+.comp-list{
+    display: flex;
+    height: 70px;
+    align-items: center;
+}
+.sixth h2{
+    color: #6495ED ;
+}
+
+.imgcont{
+  grid-column: span 2;
+  padding: 0px;
+}
+.company_logo{
+  height:80px;
+  width:80px;
+  position:absolute;
+  top:90px !important;
+  left: 40px !important ;
+
+}
+h1{
+  padding-left: 80px;
+  padding-top: 5px;
+  margin-bottom: 0px;
+}
+.companyimg{
+  height: 60px;
+  width: 60px;
+  margin-right: 6px;
+}
+.fifth hr{
+  margin-top: 0px
+}
+.cs{
+    color: black;
+    font-size: 1.2em; 
+}
+para{
+  text-align: justify;
+}
+.right{
+  padding-left: 0px;
+}
+
+
+.item.fourth {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.item.fourth h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.item.fourth hr {
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+.item.fourth .key-qualities,
+.item.fourth .pros,
+.item.fourth .cons,
+.item.fourth .summary,
+.item.fourth .feedback-summary {
+  margin-bottom: 20px;
+}
+
+.item.fourth h5 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.item.fourth ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.item.fourth ul li {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.item.fourth .benefits,
+.item.fourth .concerns {
+  margin-bottom: 20px;
+}
+
+.item.fourth .benefits h6,
+.item.fourth .concerns h6 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.item.fourth .benefits ul,
+.item.fourth .concerns ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.item.fourth .benefits ul li,
+.item.fourth .concerns ul li {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #555;
+}
+
+
+
+.progress-wrapper {
+  display: flex;
+  align-items: center;
+  max-width: 650px; /* Adjust the max-width as needed */
+  margin: 0 auto; /* Center the progress bar wrapper horizontally */
+}
+
+.progress-container {
+  flex-grow: 1;
+  margin: 0 10px; /* Adjust margin as needed */
+}
+
+.progress-text {
+  margin: 0 5px; /* Add margin around the text */
+}
+.carousel-content h3 {
+  width: fit-content; /* Limit width to content width */
+  margin: 0 auto; /* Center horizontally */
+}
+
+
+.progress-wrapper {
+  font-size: 24px; /* Set the desired font size */
+}
+

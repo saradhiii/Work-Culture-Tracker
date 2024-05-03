@@ -1,0 +1,102 @@
+.slide {
+    width: 150px;
+    /* Adjust as needed */
+    height: 150px;
+    /* Adjust as needed */
+    float: left;
+    margin-right: 10px;
+    /* Adjust as needed */
+    background-color: #ccc;
+    /* Adjust as needed */
+}
+
+.inactive {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* Custom styling for the body */
+
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Custom styling for the body */
+/* Custom styling for the body */
+body {
+    
+    background-size: cover;
+    background-position: center;
+    font-family: 'Open Sans', sans-serif;
+    padding-top: 50px;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+
+
+.jumbotron {
+    background: linear-gradient(to bottom right, rgba(240, 248, 255, 0.5), rgba(173, 216, 230, 0.5), rgba(135, 206, 250, 0.5), rgba(0, 191, 255, 0.5));
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+   
+    /* Reduce transparency of the border color */
+}
+
+.jumbotron h1 {
+    color: #333;
+    font-size: 40px;
+}
+
+.jumbotron p {
+    color: #555;
+    font-size: 18px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Custom styling for the search button */
+/* Adjust the background and border color of the search button */
+.navbar .btn-outline-success {
+color: #000; /* Set text color to black */
+background-color: #fff; /* Set background color to white */
+border-color: #000; /* Set border color to black */
+}
+
+/* Adjust the hover state of the search button */
+.navbar .btn-outline-success:hover {
+color: #fff; /* Change text color on hover to white */
+background-color: #000; /* Change background color on hover to black */
+border-color: #000; /* Maintain border color on hover as black */
+}
+
+
+
+
+
+
+/* Style for the logo */
+.logo {
+    width: 100px;
+    /* Adjust the width as needed */
+    height: auto;
+    /* Maintain aspect ratio */
+}

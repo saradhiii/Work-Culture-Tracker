@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Menu</title>
+    <link rel="stylesheet" href="./comp.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><%=Navbar%></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        <li class="nac-item search-icon">
+
+        </li>
+      </ul>
+      <form class="d-flex" role="search" action="/submit" method="POST">
+        <input class="form-control me-2" type="search" name="comp" placeholder="Search Company" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+    <div class="total-container">
+        <div class="item imgcont">
+          <img class="company_logo"src="./<%= company %>.jpg"/>
+          <div class="blur">
+            <img src="./bg2.jpg" width="100%">
+          </div>
+
+            <div class="item logo">
+                <div>
+                  <h1><%= company%></h1>
+                </div>
+                <div class="mid">
+                  <span class="rating-value"><%= crate  %></span>
+                  <div class="star-rating" id="starRating">
+                    <span class="static-star">&#9733;</span>
+                    <span class="static-star">&#9733;</span>
+                    <span class="static-star">&#9733;</span>
+                    <span class="static-star">&#9733;</span>
+                    <span class="static-star">&#9733;</span>
+                  </div>
+                </div>
+
+        </div>
+
+    </div>
+
+        <div class="flex2">
+        <div class="grid1">
+            <div class="item overview"><h2><%= company%> overview <%= crate%><div class="star-rating">
+              <span class="static-star">&#9733;</span>
+            </div> </h2>
+                <p>Here comes the summary overview of company based on emp reviews(openai or other model)</p>
+                <p class="para"><%= compAnalysis.Introduction %></p>
+                <p class="sizeinc">Would you recommend this to your friends?</p>
+
+               <!-- Rounded buttons -->
+               <!-- Circle radio buttons -->
+                <div class="feedback-options">
+                   <label class="feedback-option">
+                   <input type="radio" name="recommendation" value="yes" onclick="selectOption('yes')">
+                   <span class="checkmark"></span>
+                    Yes
+                  </label>
+                  <label class="feedback-option">
+                  <input type="radio" name="recommendation" value="no" onclick="selectOption('no')">
+                  <span class="checkmark"></span>
+                   No
+                  </label>
+                </div>
+              </div>
+
+
+
+
+             <div class="item third">
+                <h2><%= company%> Ratings</h2>
+                <hr/>
+                <div class="rating-body">
+                  
+                  <div class="carousel">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <div class="carousel-content">
+                        <h3>Overall Ratings</h3>
+                          <%
+                          // Calculate the total sum of ratings
+                          const totalSum = ratings.overall_rating_1 +
+                                           ratings.overall_rating_2 +
+                                           ratings.overall_rating_3 +
+                                           ratings.overall_rating_4 +
+                                           ratings.overall_rating_5;
+                          
+                          // Calculate the width percentage for each rating category
+                          //const width_5 = (ratings.overall_rating_5 / totalSum) * 100;
+                          //const width_4 = (ratings.overall_rating_4 / totalSum) * 100;
+                          //const width_3 = (ratings.overall_rating_3 / totalSum) * 100;
+                          //const width_2 = (ratings.overall_rating_2 / totalSum) * 100;
+                          //const width_1 = (ratings.overall_rating_1 / totalSum) * 100;
+                          %>
+                          <h6><%= ratings.overall_rating %> &#9733; based on <%= totalSum %> reviews </h6>
+
+                          
+                          <div class="progress-wrapper">
+                            <span class="progress-text">5star</span>
+                            <div class="progress-container">
+                              <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= (ratings.overall_rating_5 / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: <%= (ratings.overall_rating_5 / totalSum) * 100 %>%"></div>
+                              </div>
+                            </div>
+                            <span class="progress-text"><%= ratings.overall_rating_5 %></span>
+                          </div>
+                          
+                          
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">4star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= (ratings.overall_rating_5 / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= (ratings.overall_rating_4 / totalSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%= ratings.overall_rating_4 %></span>
+                            </div>
+                            
+                            
+                          </div>
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">3star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= (ratings.overall_rating_5 / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= (ratings.overall_rating_3 / totalSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%= ratings.overall_rating_3 %></span>
+                            </div>
+                            
+                            
+                          </div>
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">2star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= (ratings.overall_rating_5 / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= (ratings.overall_rating_2 / totalSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%= ratings.overall_rating_2 %></span>
+                            </div>
+                            
+                            
+                          </div>
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">1star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= (ratings.overall_rating_5 / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= (ratings.overall_rating_1 / totalSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%= ratings.overall_rating_1 %></span>
+                            </div>
+                            
+                            
+                          </div>
+                          
+                        </div>
+                      </div>
+                      
+                      <div class="carousel-item">
+                        <div class="carousel-content">
+                          <h3>Work Life Balance Ratings</h3>
+                          <%
+                          // Calculate the total sum of ratings
+                          const wlbSum = ratings['work_life_balance_rating_5.0'] +
+                                           ratings['work_life_balance_rating_4.0'] +
+                                           ratings['work_life_balance_rating_3.0'] +
+                                           ratings['work_life_balance_rating_2.0'] +
+                                           ratings['work_life_balance_rating_1.0'];
+                                           %>
+                                           <h6><%= ratings.work_life_balance %>&#9733; based on <%= wlbSum %> reviews </h6>
+                          <div class="progress-wrapper">
+                            <span class="progress-text">5star</span>
+                            <div class="progress-container">
+                              <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= (ratings['work_life_balance_rating_5.0'] /  wlbSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: <%= (ratings['work_life_balance_rating_5.0'] /  wlbSum) * 100 %>%"></div>
+                              </div>
+                            </div>
+                            <span class="progress-text"><%= ratings['work_life_balance_rating_5.0'] %></span>
+                          </div>
+                          
+                          
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">4star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= (ratings.overall_rating_5 / wlbSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= (ratings['work_life_balance_rating_4.0'] / wlbSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%= ratings['work_life_balance_rating_4.0'] %></span>
+                            </div>
+                            
+                          </div>
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">3star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= (ratings.overall_rating_5 /wlbSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= (ratings['work_life_balance_rating_3.0'] / wlbSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%= ratings['work_life_balance_rating_3.0'] %></span>
+                            </div>
+                            
+                          </div>
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">2star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= (ratings.overall_rating_5 / wlbSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= (ratings['work_life_balance_rating_2.0'] / wlbSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%= ratings['work_life_balance_rating_2.0'] %></span>
+                            </div>
+                            
+                          </div>
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">1star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= (ratings.overall_rating_5 / wlbSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= (ratings['work_life_balance_rating_1.0'] / wlbSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%= ratings['work_life_balance_rating_1.0'] %></span>
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <div class="carousel-content">
+                          <h3>Work Culture Ratings</h3>
+                          <h6><%= ratings.culture_values %>&#9733; based on <%= wlbSum %> reviews </h6>
+                          <div class="progress-wrapper">
+                            <span class="progress-text">5star</span>
+                            <div class="progress-container">
+                              <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= (ratings['culture_values_rating_5.0'] / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: <%= (ratings['culture_values_rating_5.0'] / totalSum) * 100 %>%"></div>
+                              </div>
+                            </div>
+                            <span class="progress-text"><%= ratings['culture_values_rating_5.0'] %></span>
+                          </div>
+                          
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">4star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= (ratings['culture_values_rating_4.0']  / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= (ratings['culture_values_rating_4.0'] / totalSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%= ratings['culture_values_rating_5.0'] %></span>
+                            </div>
+                            
+                          </div>
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">3star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= (ratings['culture_values_rating_3.0']  / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= (ratings['culture_values_rating_3.0'] / totalSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%= ratings['culture_values_rating_3.0'] %></span>
+                            </div>
+                            
+                          </div>
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">2star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= (ratings['culture_values_rating_2.0']  / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= (ratings['culture_values_rating_2.0'] / totalSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%= ratings['culture_values_rating_2.0'] %></span>
+                            </div>
+                            
+                          </div>
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">1star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= (ratings['culture_values_rating_1.0']  / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= (ratings['culture_values_rating_1.0'] / totalSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%= ratings['culture_values_rating_1.0'] %></span>
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <div class="carousel-content">
+                          <h3>Career Opportunities Ratings</h3>
+                          <h6><%= ratings.career_opp %>&#9733; based on <%= wlbSum %> reviews </h6>
+                          
+                          <div class="progress-wrapper">
+                            <span class="progress-text">5star</span>
+                            <div class="progress-container">
+                              <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= (ratings['career_opp_rating_5.0']  / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: <%= (ratings['career_opp_rating_5.0'] / totalSum) * 100 %>%"></div>
+                              </div>
+                            </div>
+                            <span class="progress-text"><%= ratings['career_opp_rating_5.0'] %></span>
+                          </div>
+                          
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">4star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= (ratings['career_opp_rating_4.0']  / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= (ratings['career_opp_rating_4.0'] / totalSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%= ratings['career_opp_rating_4.0'] %></span>
+                            </div>
+                            
+                          </div>
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">3star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= (ratings['career_opp_rating_3.0']  / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= (ratings['career_opp_rating_3.0'] / totalSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%= ratings['career_opp_rating_3.0'] %></span>
+                            </div>
+                            
+                          </div>
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">2star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= (ratings['career_opp_rating_2.0']  / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= (ratings['career_opp_rating_2.0'] / totalSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%= ratings['career_opp_rating_2.0'] %></span>
+                            </div>
+                            
+                          </div>
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">1star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= (ratings['career_opp_rating_1.0']  / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= (ratings['career_opp_rating_1.0'] / totalSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%= ratings['career_opp_rating_1.0'] %></span>
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <div class="carousel-content">
+                          <h3>Company Benefits Ratings</h3>
+                          <h6><%= ratings.comp_benefits %>&#9733; based on <%= wlbSum %> reviews </h6>
+                          
+                          <div class="progress-wrapper">
+                            <span class="progress-text">5star</span>
+                            <div class="progress-container">
+                              <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= ( ratings['comp_benefits_rating_5.0']  / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: <%= ( ratings['comp_benefits_rating_5.0'] / totalSum) * 100 %>%"></div>
+                              </div>
+                            </div>
+                            <span class="progress-text"><%=  ratings['comp_benefits_rating_5.0'] %></span>
+                          </div>
+                          
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">4star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= ( ratings['comp_benefits_rating_4.0']  / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= ( ratings['comp_benefits_rating_4.0'] / totalSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%=  ratings['comp_benefits_rating_4.0'] %></span>
+                            </div>
+                            
+                          </div>
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">3star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= ( ratings['comp_benefits_rating_3.0']  / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= ( ratings['comp_benefits_rating_3.0'] / totalSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%=  ratings['comp_benefits_rating_3.0'] %></span>
+                            </div>
+                            
+                          </div>
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">2star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= ( ratings['comp_benefits_rating_2.0']  / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= ( ratings['comp_benefits_rating_2.0'] / totalSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%=  ratings['comp_benefits_rating_2.0'] %></span>
+                            </div>
+                            
+                          </div>
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">1star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= ( ratings['comp_benefits_rating_1.0']  / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= ( ratings['comp_benefits_rating_1.0'] / totalSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%=  ratings['comp_benefits_rating_1.0'] %></span>
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <div class="carousel-content">
+                          <h3>Senior Management Ratings</h3>
+                          <h6><%= ratings.senior_mgmt %>&#9733; based on <%= wlbSum %> reviews </h6>
+                          
+                          <div class="progress-wrapper">
+                            <span class="progress-text">5star</span>
+                            <div class="progress-container">
+                              <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= ( ratings['senior_mgmt_rating_5.0']  / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: <%= ( ratings['senior_mgmt_rating_5.0'] / totalSum) * 100 %>%"></div>
+                              </div>
+                            </div>
+                            <span class="progress-text"><%=  ratings['senior_mgmt_rating_5.0'] %></span>
+                          </div>
+                          
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">4star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= ( ratings['senior_mgmt_rating_4.0']  / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= ( ratings['senior_mgmt_rating_4.0'] / totalSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%=  ratings['senior_mgmt_rating_4.0'] %></span>
+                            </div>
+                            
+                          </div>
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">3star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= ( ratings['senior_mgmt_rating_3.0']  / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= ( ratings['senior_mgmt_rating_3.0'] / totalSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%=  ratings['senior_mgmt_rating_3.0'] %></span>
+                            </div>
+                            
+                          </div>
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">2star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= ( ratings['senior_mgmt_rating_2.0']  / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= ( ratings['senior_mgmt_rating_2.0'] / totalSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%=  ratings['senior_mgmt_rating_2.0'] %></span>
+                            </div>
+                            
+                          </div>
+                          
+                          <div class="progress-container">
+                            <div class="progress-wrapper">
+                              <span class="progress-text">1star</span>
+                              <div class="progress-container">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="<%= ( ratings['senior_mgmt_rating_1.0']  / totalSum) * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <%= ( ratings['senior_mgmt_rating_1.0'] / totalSum) * 100 %>%"></div>
+                                </div>
+                              </div>
+                              <span class="progress-text"><%=  ratings['senior_mgmt_rating_1.0'] %></span>
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-slide="prev">
+                      <svg class="carousel-control-prev-icon" viewBox="0 0 16 16">
+                        <path fill="#000000" stroke="#000000" stroke-width="2" d="M10.354 4.646a.5.5 0 0 1 0 .708L6.707 8l3.647 3.646a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708 0z"/>
+                      </svg>
+                      <span class="sr-only">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-slide="next">
+                      <svg class="carousel-control-next-icon" viewBox="0 0 16 16">
+                        <path fill="#000000" stroke="#000000" stroke-width="2" d="M5.646 11.354a.5.5 0 0 1 0-.708L9.293 8 5.646 4.354a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708 0z"/>
+                      </svg>
+                      <span class="sr-only">Next</span>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
+
+<div class="item fourth">
+  <h2>
+    <%= company %> Analysis
+  </h2>
+  <div>
+    <hr>
+    <h5>Key Qualities and Benefits:</h5>
+    <ul>
+      <% for (const key in compAnalysis.Key_Qualities_and_Benefits) { %>
+        <li>
+           <%= compAnalysis.Key_Qualities_and_Benefits[key] %>
+        </li>
+        <% } %>
+    </ul>
+  </div>
+
+  <h5>Pros:</h5>
+  <ul>
+    <% if (Array.isArray(compAnalysis.Pros)) { %>
+      <% compAnalysis.Pros.forEach(pro=> { %>
+        <li>
+          <%= pro %>
+        </li>
+        <% }); %>
+          <% } else { %>
+            <li>No pros available</li>
+            <% } %>
+  </ul>
+
+  <!-- Display Cons -->
+  <h5>Cons:</h5>
+  <ul>
+    <% if (Array.isArray(compAnalysis.Cons)) { %>
+      <% compAnalysis.Cons.forEach(con=> { %>
+        <li>
+          <%= con %>
+        </li>
+        <% }); %>
+          <% } else { %>
+            <li>No cons available</li>
+            <% } %>
+  </ul>
+
+  <!-- Display Summary -->
+<div class = "summmmmary">
+  <h5>Summary:</h5>
+  <% if (compAnalysis.Summary) { %>
+    <% Object.keys(compAnalysis.Summary).forEach(key=> { %>
+      <li>
+         <%= compAnalysis.Summary[key] %>
+      </li>
+      <% }); %>
+        <% } else { %>
+          <p>No summary available</p>
+          <% } %>
+</div>
+
+<br>
+  <!-- Display Feedback Summary for Freshers -->
+ 
+
+  <div class="accordion shadow-lg" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            <h5>Feedback From Freshers</h5>
+          </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+              <div>
+                  
+                  <h6>Benefits:</h6>
+                  <ul>
+                      <% compAnalysis.Feedback_Summary["Freshers'_Perspective"].Benefits.forEach(benefit => { %>
+                      <li><%= benefit %></li>
+                      <% }); %>
+                  </ul>
+                  <h6>Concerns:</h6>
+                  <ul>
+                      <% compAnalysis.Feedback_Summary["Freshers'_Perspective"].Concerns.forEach(concern => { %>
+                      <li><%= concern %></li>
+                      <% }); %>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          <h5>Feedback From Senior Employees</h5>
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <div>
+            
+            <h6>Benefits:</h6>
+            <ul>
+             <% compAnalysis.Feedback_Summary["Senior_Employees_Feedback"].Benefits.forEach(benefit => { %>
+             <li><%= benefit %></li>
+             <% }); %>
+             </ul>
+             <h6>Concerns:</h6>
+             <ul>
+              <% compAnalysis.Feedback_Summary["Senior_Employees_Feedback"].Concerns.forEach(concern => { %>
+              <li><%= concern %></li>
+             <% }); %>
+             </ul>
+           </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          <h5>Feedback From Former Employees</h5>
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <div>
+            
+            <h6>Benefits:</h6>
+            <ul>
+             <% compAnalysis.Feedback_Summary["Senior_Employees_Feedback"].Benefits.forEach(benefit => { %>
+             <li><%= benefit %></li>
+             <% }); %>
+             </ul>
+             <h6>Concerns:</h6>
+             <ul>
+              <% compAnalysis.Feedback_Summary["Senior_Employees_Feedback"].Concerns.forEach(concern => { %>
+              <li><%= concern %></li>
+             <% }); %>
+             </ul>
+           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+        </div>
+      </div>
+        <div class="flex1">
+            <div class="item sixth">
+              <h2>Work at <%= company%>?</h2>
+              <p>Share your Experiences..</p>
+        
+              <form action="/form" method="get"><button type="submit" class="btn sec" style="background-color: #d1f1dd">Rate <%= company%></button></form>
+            
+            </div>
+            <div class="item fifth">
+              <h4>Top Companies for "Compensation and Benefits" Near You</h4>
+              <div class="comp-list">
+                  <img class="companyimg"src="./LinkedIn.jpg"/>
+                  <div>
+                    <h6>LinkedIn <%= first %> <div class="star-rating">
+                      <span class="cs static-star">&#9733;</span></h6>
+                  </div>
+              </div>
+              <hr>
+              <div class="comp-list">
+                <img class="companyimg"src="./Apple.jpg"/>
+                <div>
+                  <h6>Apple <%= second %> <div class="star-rating">
+                    <span class="cs static-star">&#9733;</span></h6>
+                </div>
+            </div>
+            <hr>
+            <div class="comp-list">
+              <img class="companyimg"src="./Microsoft.jpg"/>
+              <div>
+                <h6>Microsoft <%= third %> <div class="star-rating">
+                  <span class="cs static-star">&#9733;</span></h6>
+              </div>
+            </div>
+             <hr>
+             <div class="comp-list">
+              <img class="companyimg"src="/Deloitte.jpg"/>
+              <div>
+                <h6>Deloitte <%= fourth %> <div class="star-rating">
+                  <span class="cs static-star">&#9733;</span></h6>
+              </div>
+             </div>
+             <hr>
+            
+            </div>
+
+            <div class="item seventh">
+              <h2><%= company%> Reviews</h2><hr>
+              <div>
+                <ul class="right">
+                  <% if (locals.ans) { %>
+                    <% for (let i = 0; i < 3; i++) { %>
+                      
+                        <h6><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                        </svg>   <%= ans[i].employee %></h6>
+                        <div class="move">
+                        <p><span style="font-weight: bold; color: #6495ED;">Headline:</span> <%= ans[i].headline %></p>
+                        <p><span style="font-weight: bold; color: #666;">Pros:</span> <%= ans[i].pros %></p>
+                        <p><span style="font-weight: bold; color: #666;">Cons:</span> <%= ans[i].cons %></p>
+                      </div>
+                      <hr>
+                  <% }; %>
+                  <p class="d-inline-flex gap-1" style="padding-left: 3%;">
+                    <button id="toggleButton" class="btn " type="button" style="background-color:#6495ED; color: #fff;">
+                      Show More
+                    </button>
+                  </p>
+                  <div class="content" id="content">
+                      <% for (let i = 3; i < ans.length; i++) { %>
+                        <h6><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                        </svg>   <%= ans[i].employee %></h6>
+                        <div class="move">
+                        <p><span style="font-weight: bold; color: #6495ED;">Headline:</span> <%= ans[i].headline %></p>
+                        <p><span style="font-weight: bold; color: #666;">Pros:</span> <%= ans[i].pros %></p>
+                        <p><span style="font-weight: bold; color: #666;">Cons:</span> <%= ans[i].cons %></p>
+                      </div>
+                      <hr>
+                    <% }; %>
+                    <%} %>
+                  </div>
+              </ul>
+              
+              
+              </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+      const ratingValue = <%= crate %>;
+    
+      function updateStarRating(ratingValue) {
+        const starRating = document.getElementById('starRating');
+        const staticStars = starRating.querySelectorAll('.static-star');
+    
+        // Loop through static stars and update their appearance based on the rating value
+        staticStars.forEach((star, index) => {
+          if (index < Math.floor(ratingValue)) {
+            star.classList.add('filled-star');
+          } else if (index === Math.floor(ratingValue) && ratingValue % 1 !== 0) {
+            star.classList.add('half-filled-star');
+          } else {
+            star.classList.remove('filled-star');
+            star.classList.remove('half-filled-star');
+          }
+        });
+      }
+    
+      // Call the function with the rating value
+      updateStarRating(ratingValue);
+
+      document.addEventListener("DOMContentLoaded", function() {
+  const toggleButton = document.getElementById("toggleButton");
+  const content = document.getElementById("content");
+
+  // Hide the content initially
+  content.style.display = "none";
+
+  // Toggle visibility of content when the button is clicked
+  toggleButton.addEventListener("click", function() {
+    if (content.style.display === "none") {
+      content.style.display = "block";
+      toggleButton.style.display = "none"; // Hide the button
+    } else {
+      content.style.display = "none";
+      toggleButton.style.display = "block"; // Show the button
+    }
+  });
+});
+
+$(document).ready(function(){
+  // Activate carousel control prev
+  $(".carousel-control-prev").click(function(event){
+    event.preventDefault(); // Prevent default behavior
+    var $prev = $(".carousel-item.active").prev();
+    if ($prev.length === 0) {
+      $prev = $(".carousel-item:last");
+    }
+    $(".carousel-item.active").removeClass("active");
+    $prev.addClass("active");
+  });
+  
+  // Activate carousel control next
+  $(".carousel-control-next").click(function(event){
+    event.preventDefault(); // Prevent default behavior
+    var $next = $(".carousel-item.active").next();
+    if ($next.length === 0) {
+      $next = $(".carousel-item:first");
+    }
+    $(".carousel-item.active").removeClass("active");
+    $next.addClass("active");
+  });
+});
+
+
+      
+
+    </script>
+    
+  </body>
+<div class="footer">
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+      <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+        <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+      </a>
+      <span class="mb-3 mb-md-0 text-body-secondary">© 2024 Company, Inc</span>
+    </div>
+
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <li class="ms-3"><a class="text-body-secondary" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334q.002-.211-.006-.422A6.7 6.7 0 0 0 16 3.542a6.7 6.7 0 0 1-1.889.518 3.3 3.3 0 0 0 1.447-1.817 6.5 6.5 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.32 9.32 0 0 1-6.767-3.429 3.29 3.29 0 0 0 1.018 4.382A3.3 3.3 0 0 1 .64 6.575v.045a3.29 3.29 0 0 0 2.632 3.218 3.2 3.2 0 0 1-.865.115 3 3 0 0 1-.614-.057 3.28 3.28 0 0 0 3.067 2.277A6.6 6.6 0 0 1 .78 13.58a6 6 0 0 1-.78-.045A9.34 9.34 0 0 0 5.026 15"/>
+      </svg></a></li>
+      <li class="ms-3"><a class="text-body-secondary" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+        <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+      </svg></a></li>
+      <li class="ms-3"><a class="text-body-secondary" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+      </svg></a></li>
+    </ul>
+  </footer>
+</div>
+</html>

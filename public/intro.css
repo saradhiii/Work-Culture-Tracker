@@ -1,0 +1,39 @@
+html,body{
+    height: 100vh;
+}
+.img-fluid {
+    width: 100%;
+    height: auto;
+}
+.col-xxl-8 {
+    padding: 40px; /* Add padding to the column */
+  }
+  
+.first {
+    background-color:  #333333; /* Brighter color */
+    color: black; /* Text color */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Decrease brightness on hover */
+.first:hover {
+    background-color: #ADD8E6 !important; /* Original color */
+}
+h2{
+    color: #d1f1dd;
+}
+.para{
+    font-size: 30px;
+}
+
+.row.flex-lg-row.align-items-center.g-5 {
+    padding-top: 30px !important; /* Adjust the padding as needed */
+    padding-bottom: 30px;
+}
+h6{
+    padding-left: 50px !important;
+}
+
