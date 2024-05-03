@@ -1,102 +1,67 @@
-.slide {
-    width: 150px;
-    /* Adjust as needed */
-    height: 150px;
-    /* Adjust as needed */
-    float: left;
-    margin-right: 10px;
-    /* Adjust as needed */
-    background-color: #ccc;
-    /* Adjust as needed */
-}
-
-.inactive {
-    pointer-events: none;
-    cursor: not-allowed;
-    opacity: 0.5;
-}
-
-/* Custom styling for the body */
-
-
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-/* Custom styling for the body */
-/* Custom styling for the body */
+/* Global Styles */
 body {
-    
-    background-size: cover;
-    background-position: center;
-    font-family: 'Open Sans', sans-serif;
-    padding-top: 50px;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
+    padding: 0;
+    background-color: #f8f9fa;
+    /* Matching background color with jumbotron */
 }
 
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
-
+/* Jumbotron Styles */
 .jumbotron {
-    background: linear-gradient(to bottom right, rgba(240, 248, 255, 0.5), rgba(173, 216, 230, 0.5), rgba(135, 206, 250, 0.5), rgba(0, 191, 255, 0.5));
+    background-color: #f8f9fa;
+    /* Matching background color with body */
     border-radius: 15px;
     padding: 30px;
     text-align: center;
-   
-    /* Reduce transparency of the border color */
+    margin-top: 120px;
+    color: #333;
+    /* Dark text color */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    /* Soft shadow effect */
 }
 
 .jumbotron h1 {
-    color: #333;
     font-size: 40px;
+    margin-bottom: 20px;
 }
 
 .jumbotron p {
-    color: #555;
     font-size: 18px;
-    padding: 20px;
-    text-align: center;
 }
 
-/* Custom styling for the search button */
-/* Adjust the background and border color of the search button */
-.navbar .btn-outline-success {
-color: #000; /* Set text color to black */
-background-color: #fff; /* Set background color to white */
-border-color: #000; /* Set border color to black */
+/* Search Form Styles */
+.form-control {
+    width: 70%;
 }
 
-/* Adjust the hover state of the search button */
-.navbar .btn-outline-success:hover {
-color: #fff; /* Change text color on hover to white */
-background-color: #000; /* Change background color on hover to black */
-border-color: #000; /* Maintain border color on hover as black */
+.btn {
+    border-radius: 20px;
 }
 
+.btn-outline-success {
+    color: #0062cc;
+    /* Dark blue text color */
+    border-color: #0062cc;
+    /* Dark blue border color */
+}
 
+.btn-outline-success:hover {
+    background-color: #0062cc;
+    /* Dark blue background color on hover */
+    color: #fff;
+    /* White text color on hover */
+}
 
-
-
-
-/* Style for the logo */
-.logo {
-    width: 100px;
-    /* Adjust the width as needed */
-    height: auto;
-    /* Maintain aspect ratio */
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .form-control {
+        width: 100%;
+    }
 }
