@@ -13,18 +13,26 @@
 
 <body>
 
-    <div class="container">
-        <div class="jumbotron">
-            <h1>Welcome to Candid Careers</h1>
-            <p>Discover your dream job with us. We provide valuable insights into company reviews, employee feedback,
-                and more to help you make informed career decisions.</p>
-            <form class="d-flex" role="search" action="/submit" method="POST">
-                <input class="form-control me-2" type="search" name="comp" placeholder="Search Company"
-                    aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Welcome to Candid Careers</h1>
+        <p>Discover your dream job with us. We provide valuable insights into company reviews, employee feedback,
+            and more to help you make informed career decisions.</p>
+        <form class="d-flex" role="search" action="/submit" method="POST">
+            <select class="form-select me-2" name="comp" aria-label="Company Select">
+                <option value="" disabled selected hidden>Select a company</option>
+                <option value="Oracle">Oracle</option>
+                <option value="IBM">IBM</option>
+                <option value="Apple">Apple</option>
+                <option value="Microsoft">Microsoft</option>
+                <option value="LinkedIn">LinkedIn</option>
+            </select>
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
     </div>
+</div>
+
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./frontend.js"></script>
