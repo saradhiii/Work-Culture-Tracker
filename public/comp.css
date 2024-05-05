@@ -9,12 +9,13 @@
 
 }
 .navbar-brand {
-    font-family: 'Lato', sans-serif;
-    font-size: 24px;
-    font-weight: 600;
-    color: white; /* Set the text color to white */
-    /* Add any additional styling here */
-    /* Add any additional styling here */
+  font-family: 'Open Sans', sans-serif;
+  /* Use your preferred font family */
+  font-size: 24px;
+  /* Adjust the font size as needed */
+  font-weight: 100;
+  /* Adjust the font weight as needed */
+  color: #6a0dad;
 }
 
 
