@@ -26,10 +26,17 @@
 
         </li>
       </ul>
-      <form class="d-flex" role="search" action="/submit" method="POST">
-        <input class="form-control me-2" type="search" name="comp" placeholder="Search Company" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+    <form class="d-flex" role="search" action="/submit" method="POST">
+      <select class="form-select me-2" name="comp" aria-label="Company Select">
+        <option value="" disabled selected hidden>Select a company</option>
+        <option value="Oracle">Oracle</option>
+        <option value="IBM">IBM</option>
+        <option value="Apple">Apple</option>
+        <option value="Microsoft">Microsoft</option>
+        <option value="LinkedIn">LinkedIn</option>
+      </select>
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
     </div>
   </div>
 </nav>
@@ -37,7 +44,7 @@
         <div class="item imgcont">
           <img class="company_logo"src="./<%= company %>.jpg"/>
           <div class="blur">
-            <img src="./bg2.jpg" width="100%">
+            
           </div>
 
             <div class="item logo">

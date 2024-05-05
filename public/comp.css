@@ -76,7 +76,7 @@
 
 
 .navbar.navbar-expand-lg.bg-body-tertiary {
-    background-color: #ADD8E6 !important; /* Your desired color */
+    background: linear-gradient(135deg, #bde0fe, #dce7f8);
 }
 .item.overview p {
     color: #6C757D; /* Your desired color */
@@ -99,8 +99,7 @@ h2,h4{
     display: flex;
     height: 60px;
     grid-column: span 2;
-
-    background-color: aquamarine;
+    background: linear-gradient(135deg, #bde0fe, #dce7f8);
     z-index: -1; /* Send the blur div behind other content */
 }
 
