@@ -52,7 +52,7 @@ app.post("/submit-feedback",(req,res)=>{
   res.send(`
         <script>
             alert("Your feedback has been submitted successfully!");
-            window.location.href = "/";
+            window.location.href = "/submit";
         </script>
     `);})
 app.post("/submit",(req,res)=>{
